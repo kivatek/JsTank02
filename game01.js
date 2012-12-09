@@ -27,13 +27,13 @@ window.onload = function() {
 		myTank.x = 128;
 		myTank.y = 160;
 		myTank.isMoving = false;
-		// Œü‚« 0:‰ºA1:¶A2:‰EA3:‰º
+		// å‘ã 0:ä¸‹ã€1:å·¦ã€2:å³ã€3:ä¸‹
 		myTank.direction = 0;
 		myTank.animCheck = 0;
 		myTank.pattern = 0;
 		myTank.addEventListener('enterframe', function() {
 			this.animCheck++;
-			// ‚S•ûŒüA‚Rƒpƒ^[ƒ“‚Ì‚¤‚¿‚Ç‚ÌƒtƒŒ[ƒ€‚ğg‚¤‚©‚ğŒvZ‚·‚éB
+			// ï¼”æ–¹å‘ã€ï¼“ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ã†ã¡ã©ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’ä½¿ã†ã‹ã‚’è¨ˆç®—ã™ã‚‹ã€‚
 			this.frame = this.direction * 6;
 			if (this.isMoving) {
 				this.moveBy(this.vx, this.vy);
@@ -66,7 +66,7 @@ window.onload = function() {
 					var y = this.y + this.vy;
 					if (0 <= x && x < 320-32) {
 						this.isMoving = true;
-						this.animCheck = 0;	// ƒAƒjƒ[ƒVƒ‡ƒ“ƒJƒEƒ“ƒ^‚Í•K—v‚É‰‚¶‚ÄƒŠƒZƒbƒgB
+						this.animCheck = 0;	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚«ã‚¦ãƒ³ã‚¿ã¯å¿…è¦ã«å¿œã˜ã¦ãƒªã‚»ãƒƒãƒˆã€‚
 						arguments.callee.call(this);
 					}
 				}
@@ -75,7 +75,7 @@ window.onload = function() {
 					var y = this.y + this.vy;
 					if (0 <=y && y < 320-32) {
 						this.isMoving = true;
-						this.animCheck = 0;	// ƒAƒjƒ[ƒVƒ‡ƒ“ƒJƒEƒ“ƒ^‚Í•K—v‚É‰‚¶‚ÄƒŠƒZƒbƒgB
+						this.animCheck = 0;	// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚«ã‚¦ãƒ³ã‚¿ã¯å¿…è¦ã«å¿œã˜ã¦ãƒªã‚»ãƒƒãƒˆã€‚
 						arguments.callee.call(this);
 					}
 				}
