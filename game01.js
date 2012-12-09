@@ -27,7 +27,7 @@ window.onload = function() {
 		myTank.x = 128;
 		myTank.y = 160;
 		myTank.isMoving = false;
-		// 向き 0:下、1:左、2:右、3:下
+		// 向き 0:下、1:左、2:右、3:上
 		myTank.direction = 0;
 		myTank.animCheck = 0;
 		myTank.pattern = 0;
