@@ -85,7 +85,7 @@ window.onload = function() {
 		myTank.isMoving = false;
 		// 向き 0:下、1:左、2:右、3:上
 		myTank.direction = 0;
-		myTank.animCheck = 0;
+		myTank.animCheck = 0;	// アニメーションパターンの切替えタイミングをコントロールするために使用する。
 		myTank.pattern = 0;
 		
 		// デザートカラーの戦車（敵用）のスプライトを用意。
