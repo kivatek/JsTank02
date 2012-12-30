@@ -8,50 +8,47 @@ var Tank = Class.create(Sprite, {
 		this.direction = direction;
 		this.isMoving = false;
 		if (type == 0) {
-			// 緑色の戦車
+			// 緑色の戦車を表すフレーム番号
 			this.frame = 0;
 			// キー入力の確認や戦車の移動プログラムを登録する。
 			this.addEventListener('enterframe', function() {
 				if (this.isMoving) {
-					this.moveBy(this.vx, this.vy);
+					// ｘ、ｙ座標を更新する。
+					this.moveBy(this.vx * 16, this.vy * 16);
 					// １ブロック分動いたかどうかを確認する。
 					if ((this.vx && this.x % 32 == 0) || (this.vy && this.y % 32 == 0)) {
 						this.isMoving = false;
-						this.pattern = 1;
 					} else {
 						// ４方向、３パターンのうちどのフレームを使うかを計算する。
 						this.pattern = (this.pattern + 1) % 3;
 					}
 					this.frame = this.direction * 6 + this.pattern;
 				} else {
+					// 移動方向を表す情報をクリアする。
 					this.vx = this.vy = 0;
 
+					// キーの入力状態をチェックする。
+					// 入力状態に合わせて戦車の向き情報を変更する。
 					// 向き 0:下、1:左、2:右、3:上
 					if (game.input.left) {
 						this.direction = 1;
-						this.vx = -16;
+						this.vx = -1;
 					} else if (game.input.right) {
 						this.direction = 2;
-						this.vx = 16;
+						this.vx = 1;
 					} else if (game.input.up) {
 						this.direction = 3;
-						this.vy = -16;
+						this.vy = -1;
 					} else if (game.input.down) {
 						this.direction = 0;
-						this.vy = 16;
+						this.vy = 1;
 					}
-					if (this.vx) {
-						var x = this.x + this.vx;
-						var y = this.y + this.vy;
-						if (0 <= x && x < 320-32) {
-							this.isMoving = true;
-							arguments.callee.call(this);
-						}
-					}
-					if (this.vy) {
-						var x = this.x + this.vx;
-						var y = this.y + this.vy;
-						if (0 <=y && y < 320-32) {
+					if (this.vx || this.vy) {
+						// 一ブロック分移動した後の座標を計算する。
+						var x = this.x + this.vx * 32;
+						var y = this.y + this.vy * 32;
+						if (0 <= x && x < 320 && 0 <= y && y < 320) {
+							// 一ブロック分移動した後の座標がステージの範囲内であれば移動処理を開始する。
 							this.isMoving = true;
 							arguments.callee.call(this);
 						}
@@ -59,7 +56,7 @@ var Tank = Class.create(Sprite, {
 				}
 			});
 		} else {
-			// デザートカラーの戦車
+			// デザートカラーの戦車を表すフレーム番号
 			this.frame = 3;
 		}
 	}
